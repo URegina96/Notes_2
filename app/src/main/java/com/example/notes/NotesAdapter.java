@@ -26,6 +26,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     interface OnNoteClickListner {
         void onNoteClick (int position);
+        void onLongClick(int position);
     }
 
     @NonNull
@@ -80,6 +81,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
                     if (onNoteClickListner !=null){
                         onNoteClickListner.onNoteClick(getAdapterPosition());
                     }
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener(){
+                @Override
+                public boolean onLongClick(View v){
+                    if(onNoteClickListner!=null){
+                        onNoteClickListner.onLongClick(getAdapterPosition());
+                    }
+                    return true;
                 }
             });
         }

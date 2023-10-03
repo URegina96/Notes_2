@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,13 +14,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewNote;
-    public static final ArrayList<Note>notes=new ArrayList<>();
+    public static final ArrayList<Note> notes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerViewNote =findViewById(R.id.recyclerViewNotes);
+        recyclerViewNote = findViewById(R.id.recyclerViewNotes);
         if (notes.isEmpty()) {
             notes.add(new Note("задача_1", "подзадача_1", "понедельник", 4));
             notes.add(new Note("задача_2", "подзадача_2", "вторник", 2));
@@ -37,14 +38,25 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnNoteClickListner(new NotesAdapter.OnNoteClickListner() {
             @Override
             public void onNoteClick(int position) {
+                Toast.makeText(MainActivity.this, "клик", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(int position) {
                 notes.remove(position);
                 adapter.notifyDataSetChanged();
+//                remove(position);
             }
         });
     }
 
+//    private void remove(int position) {
+//        notes.remove(position);
+//        adapter.notifyDataSetChanged();
+//    }
+
     public void onClickAddNote(View view) {
-        Intent intent =new Intent(this,AddNoteActivity.class);
+        Intent intent = new Intent(this, AddNoteActivity.class);
         startActivity(intent);
     }
 }
