@@ -1,6 +1,8 @@
 package com.example.notes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,15 +47,27 @@ public class MainActivity extends AppCompatActivity {
             public void onLongClick(int position) {
                 notes.remove(position);
                 adapter.notifyDataSetChanged();
-//                remove(position);
+                remove(position);
             }
         });
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+                remove(viewHolder.getAdapterPosition());
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(recyclerViewNote);
     }
 
-//    private void remove(int position) {
-//        notes.remove(position);
-//        adapter.notifyDataSetChanged();
-//    }
+    private void remove(int position) {
+        notes.remove(position);
+//        adapter.notifyDataSetChanged(); - вот тут выдает ошибку и ломает все приложение, поэтому не могу использовать в public void onLongClick(int position) просто  remove(position) и приходится дублировать код
+    }
 
     public void onClickAddNote(View view) {
         Intent intent = new Intent(this, AddNoteActivity.class);
