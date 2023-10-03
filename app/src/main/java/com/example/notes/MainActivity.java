@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         NotesAdapter adapter = new NotesAdapter(notes);
         recyclerViewNote.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewNote.setAdapter(adapter);
+        adapter.setOnNoteClickListner(new NotesAdapter.OnNoteClickListner() {
+            @Override
+            public void onNoteClick(int position) {
+                Toast.makeText(MainActivity.this, "Номер позиции: "+position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void onClickAddNote(View view) {
