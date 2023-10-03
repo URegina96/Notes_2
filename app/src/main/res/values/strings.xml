@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">Notes</string>
     <string name="label_day_of_week">День недели:</string>
+    <string name="save_note">Save Note</string>
+    <string name="heading">Heading</string>
+    <string name="description">Description</string>
+    <string name="priority_1">1</string>
+    <string name="priority_2">2</string>
+    <string name="priority_3">3</string>
+
+    <string-array name="days_of_week">
+        <item>пн</item>
+        <item>вт</item>
+        <item>ср</item>
+        <item>чт</item>
+        <item>пт</item>
+        <item>сб</item>
+        <item>вс</item>
+    </string-array>
 </resources>
