@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewNote;
     public static final ArrayList<Note> notes = new ArrayList<>();
+    private NotesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(int position) {
-                notes.remove(position);
-                adapter.notifyDataSetChanged();
+//                notes.remove(position);
+//                adapter.notifyDataSetChanged();
                 remove(position);
             }
         });
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void remove(int position) {
         notes.remove(position);
-//        adapter.notifyDataSetChanged(); - вот тут выдает ошибку и ломает все приложение, поэтому не могу использовать в public void onLongClick(int position) просто  remove(position) и приходится дублировать код
+        adapter.notifyDataSetChanged(); //        - вот тут выдает ошибку и ломает все приложение, поэтому не могу использовать в public void onLongClick(int position) просто  remove(position) и приходится дублировать код
     }
 
     public void onClickAddNote(View view) {
