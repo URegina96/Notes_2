@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 
 import java.util.ArrayList;
 
@@ -61,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put(NotesContract.NotesEntry.COLUMN_PRIORITY, note.getPriorty());
             database.insert(NotesContract.NotesEntry.TABLE_NAME, null, contentValues);
         }
-        NotesAdapter adapter = new NotesAdapter(notesFromDB);
+        adapter = new NotesAdapter(notes);
         recyclerViewNote.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewNote.setAdapter(adapter);
         adapter.setOnNoteClickListner(new NotesAdapter.OnNoteClickListner() {
@@ -72,8 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLongClick(int position) {
-//                notes.remove(position);
-//                adapter.notifyDataSetChanged();
                 remove(position);
             }
         });
@@ -93,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void remove(int position) {
         notes.remove(position);
-        adapter.notifyDataSetChanged(); //        - вот тут выдает ошибку и ломает все приложение, поэтому не могу использовать в public void onLongClick(int position) просто  remove(position) и приходится дублировать код
+        adapter.notifyDataSetChanged();
     }
 
     public void onClickAddNote(View view) {
