@@ -32,11 +32,11 @@ public class AddNoteActivity extends AppCompatActivity {
         String description = editTextDescription.getText().toString().trim();
         String daysOfWeek = spinnerDaysOfWeek.getSelectedItem().toString();
         int radioButtonId = radioGroupPriority.getCheckedRadioButtonId();
-        RadioButton radioButton =findViewById(radioButtonId);
-        int priority =Integer.parseInt(radioButton.getText().toString());
-        Note note= new Note(title,description,daysOfWeek,priority);
+        RadioButton radioButton = findViewById(radioButtonId);
+        int priority = Integer.parseInt(radioButton.getText().toString());
+        Note note = new Note(title, description, daysOfWeek, priority);
         MainActivity.notes.add(note);
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
