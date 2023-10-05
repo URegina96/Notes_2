@@ -53,18 +53,18 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Note> notesFromDB = new ArrayList<>();
         Cursor cursor = database.query(NotesContract.NotesEntry.TABLE_NAME, null, null, null, null, null, null);
         while (cursor.moveToNext()) {
-//           String title = cursor.getString(cursor.getColumnIndex(NotesContract.NotesEntry.COLUMN_TITLE));
-//           String description= cursor.getString(cursor.getColumnIndex(NotesContract.NotesEntry.COLUMN_DESCRIPTION));
-//           String dayOfWeek = cursor.getString(cursor.getColumnIndex(NotesContract.NotesEntry.COLUMN_DAY_OF_WEEK));
-//           int priority = cursor.getInt(cursor.getColumnIndex(NotesContract.NotesEntry.COLUMN_PRIORITY));
-            String title =cursor.getString(cursor.getColumnIndex("COLUMN_TITLE"));
-            int ix0=cursor.getColumnIndex("COLUMN_TITLE");
-            String description =cursor.getString(cursor.getColumnIndex("COLUMN_DESCRIPTION"));
-            int ix1=cursor.getColumnIndex("COLUMN_TITLE");
-            String dayOfWeek =cursor.getString(cursor.getColumnIndex("COLUMN_DAY_OF_WEEK"));
-            int ix2=cursor.getColumnIndex("COLUMN_TITLE");
-            int priority=cursor.getInt(cursor.getColumnIndex("COLUMN_PRIORITY"));
-            int ix3=cursor.getColumnIndex("COLUMN_TITLE");
+           String title = cursor.getString(cursor.getColumnIndexOrThrow(NotesContract.NotesEntry.COLUMN_TITLE));
+           String description= cursor.getString(cursor.getColumnIndexOrThrow(NotesContract.NotesEntry.COLUMN_DESCRIPTION));
+           String dayOfWeek = cursor.getString(cursor.getColumnIndexOrThrow(NotesContract.NotesEntry.COLUMN_DAY_OF_WEEK));
+           int priority = cursor.getInt(cursor.getColumnIndexOrThrow(NotesContract.NotesEntry.COLUMN_PRIORITY));
+//            String title =cursor.getString(cursor.getColumnIndex("COLUMN_TITLE"));
+//            int ix0=cursor.getColumnIndex("COLUMN_TITLE");
+//            String description =cursor.getString(cursor.getColumnIndex("COLUMN_DESCRIPTION"));
+//            int ix1=cursor.getColumnIndex("COLUMN_TITLE");
+//            String dayOfWeek =cursor.getString(cursor.getColumnIndex("COLUMN_DAY_OF_WEEK"));
+//            int ix2=cursor.getColumnIndex("COLUMN_TITLE");
+//            int priority=cursor.getInt(cursor.getColumnIndex("COLUMN_PRIORITY"));
+//            int ix3=cursor.getColumnIndex("COLUMN_TITLE");
             Note note=new Note(title,description,dayOfWeek,priority);
             notesFromDB.add(note);
         }
