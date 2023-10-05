@@ -4,13 +4,13 @@ public class Note {
     private String title;
     private String description;
     private String dayOfWeek;
-    private int priorty;
+    private int priority;
 
-    public Note(String title, String description, String dayOfWeek, int priorty) {
+    public Note(String title, String description, String dayOfWeek, int priority) {
         this.title = title;
         this.description = description;
         this.dayOfWeek = dayOfWeek;
-        this.priorty = priorty;
+        this.priority = priority;
     }
 
     public String getTitle() {
@@ -25,7 +25,7 @@ public class Note {
         return dayOfWeek;
     }
 
-    public int getPriorty() {
-        return priorty;
+    public int getPriority() {
+        return priority;
     }
 }

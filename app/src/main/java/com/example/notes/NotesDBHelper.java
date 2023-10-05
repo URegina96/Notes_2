@@ -12,12 +12,14 @@ public class NotesDBHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
 
-    public NotesDBHelper(@Nullable Context context) {
+    public NotesDBHelper(Context context) {
+
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(NotesContract.NotesEntry.CREATE_COMMAND);
     }
 

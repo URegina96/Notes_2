@@ -7,7 +7,7 @@ public class NotesContract {
         public static final String TABLE_NAME = "notes";
         public static final String COLUMN_TITLE = "title";
         public static final String COLUMN_DESCRIPTION = "description";
-        public static final String COLUMN_DAY_OF_WEEK = "column_day_of_week";
+        public static final String COLUMN_DAY_OF_WEEK = "day_of_week";
         public static final String COLUMN_PRIORITY = "priority";
 
         public static final String TYPE_TEXT = "TEXT";
