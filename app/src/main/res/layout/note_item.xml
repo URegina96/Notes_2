@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+            android:layout_marginLeft="8dp" />
 
         <TextView
             android:id="@+id/textViewDayOfWeek"
@@ -36,7 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/textViewLabelDayOfWeek"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+            android:layout_marginLeft="8dp" />
 
         <TextView
             android:id="@+id/textViewLabelDayOfWeek"
@@ -45,7 +47,8 @@
             android:layout_marginStart="8dp"
             android:text="@string/label_day_of_week"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription"
+            android:layout_marginLeft="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

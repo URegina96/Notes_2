@@ -8,25 +8,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.Year;
 import java.util.ArrayList;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder> {
     private ArrayList<Note> notes;
-
-    public void setOnNoteClickListner(OnNoteClickListner onNoteClickListner) {
-        this.onNoteClickListner = onNoteClickListner;
-    }
-
-    private OnNoteClickListner onNoteClickListner;
+    private OnNoteClickListener onNoteClickListener;
 
     public NotesAdapter(ArrayList<Note> notes) {
         this.notes = notes;
     }
 
-    interface OnNoteClickListner {
-        void onNoteClick (int position);
+    interface OnNoteClickListener {
+        void onNoteClick(int position);
         void onLongClick(int position);
+    }
+
+    public void setOnNoteClickListener(OnNoteClickListener onNoteClickListener) {
+        this.onNoteClickListener = onNoteClickListener;
     }
 
     @NonNull
@@ -49,10 +47,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
                 colorId = notesViewHolder.itemView.getResources().getColor(android.R.color.holo_red_light);
                 break;
             case 2:
-                colorId = notesViewHolder.itemView.getResources().getColor(android.R.color.holo_orange_dark);
+                colorId = notesViewHolder.itemView.getResources().getColor(android.R.color.holo_orange_light);
                 break;
             default:
-                colorId = notesViewHolder.itemView.getResources().getColor(android.R.color.holo_green_dark);
+                colorId = notesViewHolder.itemView.getResources().getColor(android.R.color.holo_green_light);
                 break;
         }
         notesViewHolder.textViewTitle.setBackgroundColor(colorId);
@@ -69,7 +67,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
         private TextView textViewDescription;
         private TextView textViewDayOfWeek;
 
-
         public NotesViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
@@ -77,17 +74,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
             textViewDayOfWeek = itemView.findViewById(R.id.textViewDayOfWeek);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    if (onNoteClickListner !=null){
-                        onNoteClickListner.onNoteClick(getAdapterPosition());
+                public void onClick(View v) {
+                    if (onNoteClickListener != null) {
+                        onNoteClickListener.onNoteClick(getAdapterPosition());
                     }
                 }
             });
-            itemView.setOnLongClickListener(new View.OnLongClickListener(){
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public boolean onLongClick(View v){
-                    if(onNoteClickListner!=null){
-                        onNoteClickListner.onLongClick(getAdapterPosition());
+                public boolean onLongClick(View v) {
+                    if (onNoteClickListener != null) {
+                        onNoteClickListener.onLongClick(getAdapterPosition());
                     }
                     return true;
                 }
