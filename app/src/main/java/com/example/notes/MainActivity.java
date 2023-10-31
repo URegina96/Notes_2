@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewNotes = findViewById(R.id.recyclerViewNotes);
         dbHelper = new NotesDBHelper(this);
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-<<<<<<< HEAD
+
 //        if (notes.isEmpty()) {
 //            notes.add(new Note("задача_1", "подзадача_1", "понедельник", 1));
 //            notes.add(new Note("задача_2", "подзадача_2", "вторник", 2));
@@ -47,25 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //            contentValues.put(NotesContract.NotesEntry.COLUMN_PRIORITY, note.getPriority());
 //            database.insert(NotesContract.NotesEntry.TABLE_NAME, null, contentValues);
 //        }
-=======
-        if (notes.isEmpty()) {
-            notes.add(new Note("задача_1", "подзадача_1", "понедельник", 1));
-            notes.add(new Note("задача_2", "подзадача_2", "вторник", 2));
-            notes.add(new Note("задача_3", "подзадача_3", "среда", 3));
-            notes.add(new Note("задача_4", "подзадача_4", "четверг", 1));
-            notes.add(new Note("задача_5", "подзадача_5", "пятница", 3));
-            notes.add(new Note("задача_6", "подзадача_6", "понедельник", 3));
-            notes.add(new Note("задача_7", "подзадача_7", "суббота", 2));
-        }
-        for (Note note : notes) {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(NotesContract.NotesEntry.COLUMN_TITLE, note.getTitle());
-            contentValues.put(NotesContract.NotesEntry.COLUMN_DESCRIPTION, note.getDescription());
-            contentValues.put(NotesContract.NotesEntry.COLUMN_DAY_OF_WEEK, note.getDayOfWeek());
-            contentValues.put(NotesContract.NotesEntry.COLUMN_PRIORITY, note.getPriority());
-            database.insert(NotesContract.NotesEntry.TABLE_NAME, null, contentValues);
-        }
->>>>>>> 307b598038e41c7b99a141a154b4d3880e1f4591
+
         ArrayList<Note> notesFromDB = new ArrayList<>();
         Cursor cursor = database.query(NotesContract.NotesEntry.TABLE_NAME,null,null, null, null, null,null);
         while (cursor.moveToNext()) {
@@ -86,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
             public void onNoteClick(int position) {
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> 307b598038e41c7b99a141a154b4d3880e1f4591
             @Override
             public void onLongClick(int position) {
                 remove(position);
